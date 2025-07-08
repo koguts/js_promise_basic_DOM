@@ -1,7 +1,7 @@
 'use strict';
 
 // write your code here
-
+const logo = document.querySelector('.logo');
 
 const promise1 = new Promise((resolve) => {
   logo.addEventListener('click', () => {
