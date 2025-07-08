@@ -3,8 +3,6 @@
 // write your code here
 
 
-const body = document.querySelector('body');
-
 const promise1 = new Promise((resolve) => {
   logo.addEventListener('click', () => {
     resolve();
