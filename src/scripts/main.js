@@ -2,14 +2,8 @@
 
 // write your code here
 const logoElement = document.querySelector('.logo');
-const newDiv = document.createElement('div');
-newDiv.classList.add('message');
-newDiv.textContent = "Promise was resolved!";
-const body = document.querySelector('body');
 
-const newDiv2 = document.createElement('div');
-newDiv2.classList.add('message error-message');
-newDiv2.textContent = "Promise was rejected!";
+const body = document.querySelector('body');
 
 logoElement.addEventListener('click', () => {
 const promise1 = new Promise((resolve, reject) => {
@@ -17,20 +11,33 @@ const promise1 = new Promise((resolve, reject) => {
 })
 
 promise1
-.then(() => body.appendChild(newDiv))
-.catch(() => body.appendChild(newDiv2));
-}
-)
+.then(() => {
+  const div = document.createElement('div');
+  div.classList.add('message');
+  div.textContent = 'Promise was resolved!';
+  body.appendChild(div);
+
+})
+.catch(() =>{
+  const div = document.createElement('div');
+  div.classList.add('message', 'error-message');
+  div.textContent = "Promise was rejected!";
+  body.appendChild(div);
+});
+
 
 const promise2  = new Promise((resolve, reject) => {
   setTimeout(() =>{
-    reject('Promise was rejected!');
+    reject(new Error('Promise was rejected!'));
   }, 3000)
 })
 
 promise2
-  .catch(() => body.appendChild(newDiv2));
+  .catch(() =>{
+  const div = document.createElement('div');
+  div.classList.add('message', 'error-message');
+  div.textContent = "Promise was rejected!";
+  body.appendChild(div);
+  })
 
-
-
-
+})
